@@ -1,21 +1,23 @@
 using UnityEngine;
 
-
-public class GameManager : MonoBehaviour
+namespace TMKOC.LifeLessons
 {
-    private static GameManager instance;
-    
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if(instance == null)
+        private static GameManager instance;
+
+
+        private void Awake()
         {
-            instance = this;    
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(instance);
+            }
         }
-        else
-        {
-            Destroy(instance);
-        }
+        public static GameManager Instance { get { return instance; } }
     }
-    public static GameManager Instance { get { return instance; } }
 }
